@@ -18,7 +18,7 @@
     color: #ff4d6d;
   }
 
-  p {
+  p.intro {
     text-align: center;
     max-width: 650px;
     margin: 10px auto 30px;
@@ -27,7 +27,7 @@
     line-height: 1.6;
   }
 
-  /* ===== MASONRY GRID ===== */
+  /* ===== GALLERY ===== */
   .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -50,16 +50,71 @@
     transform: scale(1.03);
   }
 
-  /* ===== SIZE VARIATIONS ===== */
   .wide { grid-column: span 2; }
   .tall { grid-row: span 35; }
   .medium { grid-row: span 25; }
   .small { grid-row: span 18; }
 
-  /* ===== MOBILE ===== */
-  @media (max-width: 768px) {
-    .gallery {
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  /* ===== VALENTINE MESSAGE ===== */
+  .valentine {
+    position: relative;
+    text-align: center;
+    padding: 80px 20px 100px;
+    overflow: hidden;
+  }
+
+  .valentine h2 {
+    font-size: 2rem;
+    color: #ff4d6d;
+    animation: pulse 2.5s infinite;
+    text-shadow: 0 0 15px rgba(255,77,109,0.4);
+  }
+
+  .valentine p {
+    max-width: 800px;
+    margin: 25px auto 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    animation: fadeUp 1.8s ease forwards;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ===== FLOATING HEARTS ===== */
+  .heart {
+    position: absolute;
+    bottom: -20px;
+    color: #ff6b81;
+    font-size: 18px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes floatUp {
+    from {
+      transform: translateY(0) scale(1);
+      opacity: 0.8;
+    }
+    to {
+      transform: translateY(-600px) scale(1.6);
+      opacity: 0;
     }
   }
 </style>
@@ -69,11 +124,11 @@
 
 <h1>For My Favorite Person 💕</h1>
 
-<p>
+<p class="intro">
 hellooooooo baabbyyyyy 💕 hehehe  
 soooo i made this little pageeee just for uu  
 every pic here reminds me how luckyyyy i ammmm  
-luvvvvvvvvvv uuu sooo sooo muchhhhh foreverrrrr 💖
+luvvvvvvvvvv uuu sooo sooo muchhhhh foreverrrrr 🥹💖
 </p>
 
 <div class="gallery">
@@ -103,6 +158,33 @@ luvvvvvvvvvv uuu sooo sooo muchhhhh foreverrrrr 💖
   <img src="photo24.jpg" class="tall">
   <img src="photo25.jpg" class="small">
 </div>
+
+<!-- 💖 VALENTINE MESSAGE -->
+<div class="valentine">
+  <h2>Happy Valentine’s Day Chakkareee 💖</h2>
+  <p>
+    HAPPY VALENTINES DAY CHAKKAREEE 💕  
+    U R MYY ELLAMM 😭💖  
+    THQQ FOR BEING MY BETTER HALF  
+    AND EPOZHHUMM KOODEEE NIKKUNONNDD HEHEHEEH  
+    LOVEEEEEE UUU SOOOOOOO MUUCCHHHHHH 🫶🥹💞
+  </p>
+</div>
+
+<!-- Floating hearts -->
+<script>
+  const valentine = document.querySelector('.valentine');
+
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '❤';
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+    heart.style.fontSize = (14 + Math.random() * 20) + 'px';
+    valentine.appendChild(heart);
+  }
+</script>
 
 </body>
 </html>
