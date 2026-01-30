@@ -26,7 +26,7 @@
     line-height: 1.7;
   }
 
-  /* 📸 SIMPLE SAFE GALLERY */
+  /* 📸 GALLERY */
   .gallery {
     max-width: 1200px;
     margin: auto;
@@ -73,11 +73,11 @@
   .love {
     font-size: 1.9rem;
     color: #ff2f92;
-    animation: heartbeat 1.2s infinite;
     display: inline-block;
+    animation: heartbeat 1.2s infinite;
   }
 
-  /* 🎵 MUSIC BUTTON (FIXED & ALWAYS VISIBLE) */
+  /* 🎵 MUSIC BUTTON */
   .music-btn {
     position: fixed;
     bottom: 20px;
@@ -121,7 +121,7 @@ i made this little websiteeee just for uu
 luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
 </p>
 
-<!-- 📸 GALLERY -->
+<!-- 📸 PHOTO GALLERY -->
 <div class="gallery">
   <img src="photo1.jpg">
   <img src="photo2.jpg">
@@ -150,7 +150,7 @@ luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
   <img src="photo25.jpg">
 </div>
 
-<!-- 💖 FINAL VALENTINE TEXT -->
+<!-- 💖 FINAL VALENTINE MESSAGE -->
 <div class="valentine">
   <h2>Happy Valentine’s Day Chakkareee 💖</h2>
   <p>
@@ -165,17 +165,26 @@ luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
 </div>
 
 <!-- 🎵 MUSIC -->
-<button class="music-btn" onclick="playMusic()">Play Music 💖</button>
+<button class="music-btn" onclick="toggleMusic()">Play Music 💖</button>
 
 <audio id="bgMusic">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-  function playMusic() {
-    const music = document.getElementById("bgMusic");
-    music.volume = 0.5;
-    music.play();
+  const music = document.getElementById("bgMusic");
+  const btn = document.querySelector(".music-btn");
+
+  music.volume = 0.5; // 🔒 LOCK VOLUME TO 50%
+
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+      btn.innerText = "Pause Music 💔";
+    } else {
+      music.pause();
+      btn.innerText = "Play Music 💖";
+    }
   }
 </script>
 
