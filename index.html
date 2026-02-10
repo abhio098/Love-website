@@ -301,15 +301,16 @@ const lightboxImg = document.getElementById("lightbox-img");
 
 images.forEach(img => {
   img.addEventListener("click", () => {
-    lightbox.style.display = "flex";
-    lightboxImg.classList.add("hidden");
-    spawnFallingHearts();
+  lightboxImg.src = "";              // 🔥 clear previous image
+  lightboxImg.classList.add("hidden");
+  lightbox.style.display = "flex";
+  spawnFallingHearts();
 
-    setTimeout(() => {
-      lightboxImg.src = img.src;
-      lightboxImg.classList.remove("hidden");
-    }, 600);
-  });
+  setTimeout(() => {
+    lightboxImg.src = img.src;
+    lightboxImg.classList.remove("hidden");
+  }, 600);
+});
 });
 
 lightbox.addEventListener("click", () => {
@@ -331,3 +332,4 @@ function spawnFallingHearts() {
 
 </body>
 </html>
+
