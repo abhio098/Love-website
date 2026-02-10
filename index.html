@@ -14,6 +14,7 @@ body {
   overflow-x: hidden;
 }
 
+/* ---------- HEADINGS ---------- */
 h1 {
   margin-top: 40px;
   color: #ff4d6d;
@@ -27,7 +28,7 @@ h1 {
   line-height: 1.7;
 }
 
-/* 💗 BACKGROUND HEARTS */
+/* ---------- BACKGROUND HEARTS ---------- */
 .hearts {
   position: fixed;
   inset: 0;
@@ -47,7 +48,7 @@ h1 {
   to { transform: translateY(-10vh); }
 }
 
-/* 📸 GALLERY */
+/* ---------- GALLERY ---------- */
 .gallery {
   position: relative;
   z-index: 1;
@@ -58,12 +59,8 @@ h1 {
   column-gap: 18px;
 }
 
-@media (max-width: 900px) {
-  .gallery { column-count: 2; }
-}
-@media (max-width: 500px) {
-  .gallery { column-count: 1; }
-}
+@media (max-width: 900px) { .gallery { column-count: 2; } }
+@media (max-width: 500px) { .gallery { column-count: 1; } }
 
 .gallery img {
   width: 100%;
@@ -71,8 +68,8 @@ h1 {
   border-radius: 18px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   break-inside: avoid;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
   cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .gallery img:hover {
@@ -80,7 +77,7 @@ h1 {
   box-shadow: 0 18px 40px rgba(0,0,0,0.25);
 }
 
-/* 📜 LOVE LETTER */
+/* ---------- LETTER ---------- */
 .letter-paper {
   position: relative;
   z-index: 1;
@@ -92,7 +89,7 @@ h1 {
   background-size: 100% 26px;
   border-radius: 14px;
   box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: Georgia, serif;
   color: #4a3728;
   line-height: 2;
   text-align: left;
@@ -118,20 +115,13 @@ h1 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 22px;
   opacity: 0.6;
 }
 
 .letter-paper h2::before { left: -30px; }
 .letter-paper h2::after { right: -30px; }
 
-.letter-paper p {
-  font-size: 1.15rem;
-  margin-bottom: 28px;
-  white-space: pre-line;
-}
-
-/* 🎵 MUSIC BUTTON */
+/* ---------- MUSIC BUTTON ---------- */
 .music-btn {
   position: fixed;
   bottom: 20px;
@@ -141,13 +131,11 @@ h1 {
   border: none;
   padding: 16px 22px;
   border-radius: 50px;
-  font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   z-index: 9999;
 }
 
-/* 🌌 LIGHTBOX */
+/* ---------- LIGHTBOX ---------- */
 #lightbox {
   position: fixed;
   inset: 0;
@@ -162,19 +150,17 @@ h1 {
   max-width: 90%;
   max-height: 90%;
   border-radius: 16px;
-  animation: fadeZoom 0.6s ease;
-}
-
-#lightbox img.hidden {
   opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-@keyframes fadeZoom {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+#lightbox img.show {
+  opacity: 1;
+  transform: scale(1);
 }
 
-/* ❤️ FALLING HEARTS ON PHOTO OPEN */
+/* ---------- FALLING HEARTS ---------- */
 .photo-heart-fall {
   position: fixed;
   top: -20px;
@@ -214,85 +200,40 @@ luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
 </p>
 
 <div class="gallery">
-  <!-- ADD ALL YOUR 37 PHOTOS HERE -->
-  <img src="photo1.jpg">
-  <img src="photo2.jpg">
-  <img src="photo3.jpg">
-  <img src="photo4.jpg">
-  <img src="photo5.jpg">
-  <img src="photo6.jpg">
-  <img src="photo7.jpg">
-  <img src="photo8.jpg">
-  <img src="photo9.jpg">
-  <img src="photo10.jpg">
-  <img src="photo11.jpg">
-  <img src="photo12.jpg">
-  <img src="photo13.jpg">
-  <img src="photo14.jpg">
-  <img src="photo15.jpg">
-  <img src="photo16.jpg">
-  <img src="photo17.jpg">
-  <img src="photo18.jpg">
-  <img src="photo19.jpg">
-  <img src="photo20.jpg">
-  <img src="photo21.jpg">
-  <img src="photo22.jpg">
-  <img src="photo23.jpg">
-  <img src="photo24.jpg">
-  <img src="photo25.jpg">
-  <img src="photo26.jpg">
-  <img src="photo27.jpg">
-  <img src="photo28.jpg">
-  <img src="photo29.jpg">
-  <img src="photo30.jpg">
-  <img src="photo31.jpg">
-  <img src="photo32.jpg">
-  <img src="photo33.jpg">
-  <img src="photo34.jpg">
-  <img src="photo35.jpg">
-  <img src="photo36.jpg">
+  <!-- your 37 photos -->
+  <img src="photo1.jpg"><img src="photo2.jpg"><img src="photo3.jpg">
+  <img src="photo4.jpg"><img src="photo5.jpg"><img src="photo6.jpg">
+  <img src="photo7.jpg"><img src="photo8.jpg"><img src="photo9.jpg">
+  <img src="photo10.jpg"><img src="photo11.jpg"><img src="photo12.jpg">
+  <img src="photo13.jpg"><img src="photo14.jpg"><img src="photo15.jpg">
+  <img src="photo16.jpg"><img src="photo17.jpg"><img src="photo18.jpg">
+  <img src="photo19.jpg"><img src="photo20.jpg"><img src="photo21.jpg">
+  <img src="photo22.jpg"><img src="photo23.jpg"><img src="photo24.jpg">
+  <img src="photo25.jpg"><img src="photo26.jpg"><img src="photo27.jpg">
+  <img src="photo28.jpg"><img src="photo29.jpg"><img src="photo30.jpg">
+  <img src="photo31.jpg"><img src="photo32.jpg"><img src="photo33.jpg">
+  <img src="photo34.jpg"><img src="photo35.jpg"><img src="photo36.jpg">
   <img src="photo37.jpg">
 </div>
 
 <div class="letter-paper">
 <h2>My Love 🤎</h2>
-
-<p>
-Anjali i am soo grateful to have u chakkaree omgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn
-</p>
-
-<p>
-I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa...
-</p>
-
-<p>
-NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE
-</p>
+<p>Anjali i am soo grateful to have u chakkaree omgg ommgg...</p>
 </div>
 
 <button class="music-btn" onclick="toggleMusic()">Play Music 💖</button>
-
-<audio id="bgMusic">
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgMusic"><source src="music.mp3"></audio>
 
 <div id="lightbox">
-  <img id="lightbox-img" class="hidden">
+  <img id="lightbox-img">
 </div>
 
 <script>
 const music = document.getElementById("bgMusic");
-const btn = document.querySelector(".music-btn");
 music.volume = 0.5;
 
 function toggleMusic() {
-  if (music.paused) {
-    music.play();
-    btn.innerText = "Pause Music 💔";
-  } else {
-    music.pause();
-    btn.innerText = "Play Music 💖";
-  }
+  music.paused ? music.play() : music.pause();
 }
 
 const images = document.querySelectorAll(".gallery img");
@@ -301,16 +242,18 @@ const lightboxImg = document.getElementById("lightbox-img");
 
 images.forEach(img => {
   img.addEventListener("click", () => {
-  lightboxImg.src = "";              // 🔥 clear previous image
-  lightboxImg.classList.add("hidden");
-  lightbox.style.display = "flex";
-  spawnFallingHearts();
+    lightbox.style.display = "flex";
+    lightboxImg.classList.remove("show");
+    lightboxImg.src = "";
 
-  setTimeout(() => {
-    lightboxImg.src = img.src;
-    lightboxImg.classList.remove("hidden");
-  }, 600);
-});
+    spawnFallingHearts();
+
+    setTimeout(() => {
+      lightboxImg.src = img.src;
+      lightboxImg.offsetHeight; // 🔥 force reflow
+      lightboxImg.classList.add("show");
+    }, 600);
+  });
 });
 
 lightbox.addEventListener("click", () => {
@@ -323,7 +266,6 @@ function spawnFallingHearts() {
     h.className = "photo-heart-fall";
     h.innerHTML = "❤️";
     h.style.left = Math.random() * 100 + "vw";
-    h.style.animationDuration = (0.8 + Math.random() * 0.6) + "s";
     document.body.appendChild(h);
     setTimeout(() => h.remove(), 1500);
   }
