@@ -2,177 +2,157 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For My Favorite Person 🤎</title>
+<title>For My Love 🤍</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #ffd1dc, #ffffff);
-    text-align: center;
-    overflow-x: hidden;
-  }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(#0e0e0e, #1a1a1a);
+  color: white;
+  overflow-x: hidden;
+}
 
-  h1 {
-    margin-top: 40px;
-    color: #ff4d6d;
-  }
+/* 🎵 MUSIC BUTTON */
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ff6b81;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 9999;
+  font-weight: bold;
+}
 
-  .intro {
-    max-width: 700px;
-    margin: 20px auto 40px;
-    padding: 0 20px;
-    color: #444;
-    line-height: 1.7;
-  }
+/* 🖼️ GALLERY */
+.gallery {
+  padding: 80px 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
 
-  /* 💗 FLOATING HEARTS */
-  .hearts {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  transition: transform 0.35s ease, filter 0.35s ease;
+  cursor: pointer;
+}
 
-  .heart {
-    position: absolute;
-    font-size: 18px;
-    opacity: 0.25;
-    animation: floatUp linear infinite;
-  }
+.gallery:hover img {
+  transform: scale(0.97);
+  filter: brightness(0.85);
+}
 
-  @keyframes floatUp {
-    from { transform: translateY(100vh); }
-    to { transform: translateY(-10vh); }
-  }
+.gallery img:hover {
+  transform: scale(1.03);
+  filter: brightness(1);
+  z-index: 2;
+}
 
-  /* 📸 GALLERY */
-  .gallery {
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    column-count: 3;
-    column-gap: 18px;
-  }
+/* 🌌 LIGHTBOX */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
 
-  @media (max-width: 900px) {
-    .gallery { column-count: 2; }
-  }
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 16px;
+  animation: fadeZoom 0.6s ease;
+}
 
-  @media (max-width: 500px) {
-    .gallery { column-count: 1; }
-  }
+@keyframes fadeZoom {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-  .gallery img {
-    width: 100%;
-    margin-bottom: 18px;
-    border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    break-inside: avoid;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-  }
+/* ❤️ FLOATING HEARTS */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 22px;
+  animation: floatUp 3s linear forwards;
+  pointer-events: none;
+}
 
-  .gallery img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
   }
+}
 
-  /* 📜 LOVE LETTER */
-  .letter-paper {
-    position: relative;
-    z-index: 1;
-    max-width: 850px;
-    margin: 140px auto 160px;
-    padding: 60px 50px;
-    background: #f3e4c7;
-    background-image:
-      linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-    background-size: 100% 26px;
-    border-radius: 14px;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-    font-family: "Georgia", "Times New Roman", serif;
-    color: #4a3728;
-    line-height: 2;
-    text-align: left;
-    animation: letterFloat 6s ease-in-out infinite;
-  }
+/* 📜 LOVE LETTER */
+.letter-paper {
+  max-width: 850px;
+  margin: 120px auto 160px;
+  padding: 60px 50px;
+  background: #f3e4c7;
+  background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 100% 26px;
+  border-radius: 14px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+  font-family: Georgia, serif;
+  color: #4a3728;
+  line-height: 2;
+  animation: paperFloat 6s ease-in-out infinite;
+  position: relative;
+}
 
-  @keyframes letterFloat {
-    0%,100% {
-      transform: translateY(0);
-      box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-    }
-    50% {
-      transform: translateY(-6px);
-      box-shadow: 0 28px 55px rgba(0,0,0,0.4);
-    }
-  }
+@keyframes paperFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
 
-  .letter-paper h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.2rem;
-    color: #6b4b2a;
-  }
+.letter-paper h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  color: #6b4b2a;
+  position: relative;
+}
 
-  .letter-paper p {
-    font-size: 1.15rem;
-    margin-bottom: 28px;
-    white-space: pre-line;
-  }
+.letter-paper h2::before,
+.letter-paper h2::after {
+  content: "🤎";
+  position: absolute;
+  top: 0;
+  font-size: 26px;
+}
 
-  /* 🎵 MUSIC BUTTON */
-  .music-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #ff4d6d;
-    color: white;
-    border: none;
-    padding: 16px 22px;
-    border-radius: 50px;
-    font-size: 1rem;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    z-index: 9999;
-    transition: transform 0.2s ease;
-  }
+.letter-paper h2::before { left: -40px; }
+.letter-paper h2::after { right: -40px; }
 
-  .music-btn:hover {
-    transform: scale(1.05);
-  }
-
-  .music-btn:active {
-    transform: scale(0.95);
-  }
+.letter-paper p {
+  font-size: 1.15rem;
+  margin-bottom: 28px;
+  white-space: pre-line;
+}
 </style>
 </head>
 
 <body>
 
-<!-- 💗 HEARTS -->
-<div class="hearts">
-  <span class="heart" style="left:10%; animation-duration:18s;">💗</span>
-  <span class="heart" style="left:25%; animation-duration:22s;">💞</span>
-  <span class="heart" style="left:40%; animation-duration:20s;">💖</span>
-  <span class="heart" style="left:55%; animation-duration:24s;">💘</span>
-  <span class="heart" style="left:70%; animation-duration:19s;">💓</span>
-  <span class="heart" style="left:85%; animation-duration:26s;">💗</span>
-</div>
+<button class="music-btn" onclick="toggleMusic()">💖 Music</button>
 
-<h1>For My Favorite Person 💕</h1>
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-<p class="intro">
-hellooooooo baabbyyyyy 💖 hehehe  
-i made this little websiteeee just for uu  
-every pic here reminds me how lucky i ammm  
-luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
-</p>
-
-<!-- 📸 GALLERY -->
+<!-- 🖼️ GALLERY (ALL 37 PHOTOS) -->
 <div class="gallery">
   <img src="photo1.jpg">
   <img src="photo2.jpg">
@@ -211,12 +191,16 @@ luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
   <img src="photo35.jpg">
   <img src="photo36.jpg">
   <img src="photo37.jpg">
-  
+</div>
+
+<!-- 🌌 LIGHTBOX -->
+<div id="lightbox">
+  <img id="lightbox-img">
 </div>
 
 <!-- 📜 LOVE LETTER -->
 <div class="letter-paper">
-  <h2>My Love 🤎</h2>
+  <h2>My Love</h2>
 
   <p>
 Anjali i am soo grateful to have u chakkaree omgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn
@@ -231,27 +215,47 @@ NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY 
   </p>
 </div>
 
-<!-- 🎵 MUSIC -->
-<button class="music-btn" onclick="toggleMusic()">Play Music 💖</button>
-
-<audio id="bgMusic">
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-  const music = document.getElementById("bgMusic");
-  const btn = document.querySelector(".music-btn");
-  music.volume = 0.5;
+const music = document.getElementById("bg-music");
+music.volume = 0.5;
+let playing = false;
 
-  function toggleMusic() {
-    if (music.paused) {
-      music.play();
-      btn.innerText = "Pause Music 💔";
-    } else {
-      music.pause();
-      btn.innerText = "Play Music 💖";
-    }
+function toggleMusic() {
+  if (playing) {
+    music.pause();
+  } else {
+    music.play();
   }
+  playing = !playing;
+}
+
+const imgs = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+imgs.forEach(img => {
+  img.onclick = () => {
+    lightboxImg.src = img.src;
+    lightbox.style.display = "flex";
+    spawnHearts();
+  };
+});
+
+lightbox.onclick = () => {
+  lightbox.style.display = "none";
+};
+
+function spawnHearts() {
+  for (let i = 0; i < 30; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = (2 + Math.random()*2) + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 4000);
+  }
+}
 </script>
 
 </body>
