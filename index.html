@@ -77,21 +77,21 @@ h1 {
   box-shadow: 0 18px 40px rgba(0,0,0,0.25);
 }
 
-/* ---------- LETTER ---------- */
+/* ---------- LETTER (BIGGER NOW) ---------- */
 .letter-paper {
   position: relative;
   z-index: 1;
-  max-width: 850px;
-  margin: 140px auto 160px;
-  padding: 60px 50px;
+  max-width: 980px;              /* 👈 bigger width */
+  margin: 160px auto 180px;
+  padding: 80px 70px;            /* 👈 more padding */
   background: #f3e4c7;
   background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
   background-size: 100% 26px;
-  border-radius: 14px;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+  border-radius: 16px;
+  box-shadow: 0 24px 55px rgba(0,0,0,0.35);
   font-family: Georgia, serif;
   color: #4a3728;
-  line-height: 2;
+  line-height: 2.1;
   text-align: left;
   animation: letterFloat 6s ease-in-out infinite;
 }
@@ -103,8 +103,8 @@ h1 {
 
 .letter-paper h2 {
   text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.2rem;
+  margin-bottom: 50px;
+  font-size: 2.6rem;            /* 👈 bigger heading */
   color: #6b4b2a;
   position: relative;
 }
@@ -118,8 +118,14 @@ h1 {
   opacity: 0.6;
 }
 
-.letter-paper h2::before { left: -30px; }
-.letter-paper h2::after { right: -30px; }
+.letter-paper h2::before { left: -40px; }
+.letter-paper h2::after { right: -40px; }
+
+.letter-paper p {
+  font-size: 1.28rem;           /* 👈 bigger text */
+  margin-bottom: 34px;
+  white-space: pre-line;
+}
 
 /* ---------- MUSIC BUTTON ---------- */
 .music-btn {
@@ -200,7 +206,6 @@ luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
 </p>
 
 <div class="gallery">
-  <!-- your 37 photos -->
   <img src="photo1.jpg"><img src="photo2.jpg"><img src="photo3.jpg">
   <img src="photo4.jpg"><img src="photo5.jpg"><img src="photo6.jpg">
   <img src="photo7.jpg"><img src="photo8.jpg"><img src="photo9.jpg">
@@ -218,7 +223,18 @@ luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
 
 <div class="letter-paper">
 <h2>My Love 🤎</h2>
-<p>Anjali i am soo grateful to have u chakkaree omgg ommgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn </p> <p> I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa... </p> <p> NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE</p>
+
+<p>
+Anjali i am soo grateful to have u chakkaree omgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn
+</p>
+
+<p>
+I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa...
+</p>
+
+<p>
+NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE
+</p>
 </div>
 
 <button class="music-btn" onclick="toggleMusic()">Play Music 💖</button>
@@ -250,7 +266,7 @@ images.forEach(img => {
 
     setTimeout(() => {
       lightboxImg.src = img.src;
-      lightboxImg.offsetHeight; // 🔥 force reflow
+      lightboxImg.offsetHeight;
       lightboxImg.classList.add("show");
     }, 600);
   });
@@ -274,5 +290,3 @@ function spawnFallingHearts() {
 
 </body>
 </html>
-
-
