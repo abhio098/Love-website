@@ -6,181 +6,190 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #ffd1dc, #ffffff);
-    text-align: center;
-    overflow-x: hidden;
-  }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #ffd1dc, #ffffff);
+  text-align: center;
+  overflow-x: hidden;
+}
 
-  h1 {
-    margin-top: 40px;
-    color: #ff4d6d;
-  }
+h1 {
+  margin-top: 40px;
+  color: #ff4d6d;
+}
 
-  .intro {
-    max-width: 700px;
-    margin: 20px auto 40px;
-    padding: 0 20px;
-    color: #444;
-    line-height: 1.7;
-  }
+.intro {
+  max-width: 700px;
+  margin: 20px auto 40px;
+  padding: 0 20px;
+  color: #444;
+  line-height: 1.7;
+}
 
-  /* 💗 FLOATING BACKGROUND HEARTS */
-  .hearts {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* 💗 BACKGROUND HEARTS */
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
 
-  .heart {
-    position: absolute;
-    font-size: 18px;
-    opacity: 0.25;
-    animation: floatUp linear infinite;
-  }
+.heart {
+  position: absolute;
+  font-size: 18px;
+  opacity: 0.25;
+  animation: floatUp linear infinite;
+}
 
-  @keyframes floatUp {
-    from { transform: translateY(100vh); }
-    to { transform: translateY(-10vh); }
-  }
+@keyframes floatUp {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
 
-  /* 📸 GALLERY */
-  .gallery {
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    column-count: 3;
-    column-gap: 18px;
-  }
+/* 📸 GALLERY */
+.gallery {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  column-count: 3;
+  column-gap: 18px;
+}
 
-  @media (max-width: 900px) {
-    .gallery { column-count: 2; }
-  }
+@media (max-width: 900px) {
+  .gallery { column-count: 2; }
+}
+@media (max-width: 500px) {
+  .gallery { column-count: 1; }
+}
 
-  @media (max-width: 500px) {
-    .gallery { column-count: 1; }
-  }
+.gallery img {
+  width: 100%;
+  margin-bottom: 18px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  break-inside: avoid;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+}
 
-  .gallery img {
-    width: 100%;
-    margin-bottom: 18px;
-    border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    break-inside: avoid;
-    cursor: pointer;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-  }
+.gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
 
-  .gallery img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
-  }
+/* 📜 LOVE LETTER */
+.letter-paper {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+  margin: 140px auto 160px;
+  padding: 60px 50px;
+  background: #f3e4c7;
+  background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 100% 26px;
+  border-radius: 14px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #4a3728;
+  line-height: 2;
+  text-align: left;
+  animation: letterFloat 6s ease-in-out infinite;
+}
 
-  /* 📜 LOVE LETTER */
-  .letter-paper {
-    position: relative;
-    z-index: 1;
-    max-width: 850px;
-    margin: 140px auto 160px;
-    padding: 60px 50px;
-    background: #f3e4c7;
-    background-image:
-      linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-    background-size: 100% 26px;
-    border-radius: 14px;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-    font-family: "Georgia", serif;
-    color: #4a3728;
-    line-height: 2;
-    text-align: left;
-    animation: letterFloat 6s ease-in-out infinite;
-  }
+@keyframes letterFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
 
-  @keyframes letterFloat {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
+.letter-paper h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  color: #6b4b2a;
+  position: relative;
+}
 
-  /* ❤️ LETTER HEADING */
-  .letter-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    margin-bottom: 40px;
-    color: #6b4b2a;
-    font-size: 2.2rem;
-  }
+.letter-paper h2::before,
+.letter-paper h2::after {
+  content: "❤";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  opacity: 0.6;
+}
 
-  .line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #6b4b2a, transparent);
-  }
+.letter-paper h2::before { left: -30px; }
+.letter-paper h2::after { right: -30px; }
 
-  .letter-paper p {
-    font-size: 1.15rem;
-    margin-bottom: 28px;
-    white-space: pre-line;
-  }
+.letter-paper p {
+  font-size: 1.15rem;
+  margin-bottom: 28px;
+  white-space: pre-line;
+}
 
-  /* 🎵 MUSIC BUTTON */
-  .music-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #ff4d6d;
-    color: white;
-    border: none;
-    padding: 16px 22px;
-    border-radius: 50px;
-    font-size: 1rem;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    z-index: 9999;
-  }
+/* 🎵 MUSIC BUTTON */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 16px 22px;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  z-index: 9999;
+}
 
-  /* 🖼️ IMAGE MODAL */
-  .modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.8);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9998;
-  }
+/* 🌌 LIGHTBOX */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
 
-  .modal img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 18px;
-    animation: fadeIn 0.6s ease;
-  }
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 16px;
+  animation: fadeZoom 0.6s ease;
+}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
+#lightbox img.hidden {
+  opacity: 0;
+}
 
-  /* 💞 MODAL HEARTS */
-  .modal-heart {
-    position: fixed;
-    font-size: 22px;
-    animation: modalFloat 2s linear forwards;
-    pointer-events: none;
-    z-index: 9999;
-  }
+@keyframes fadeZoom {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-  @keyframes modalFloat {
-    from { transform: translateY(100vh); opacity: 1; }
-    to { transform: translateY(-10vh); opacity: 0; }
+/* ❤️ FALLING HEARTS ON PHOTO OPEN */
+.photo-heart-fall {
+  position: fixed;
+  top: -20px;
+  font-size: 22px;
+  animation: fallDown 1.2s linear forwards;
+  pointer-events: none;
+  z-index: 10001;
+}
+
+@keyframes fallDown {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
   }
+}
 </style>
 </head>
 
@@ -188,10 +197,11 @@
 
 <div class="hearts">
   <span class="heart" style="left:10%; animation-duration:18s;">💗</span>
-  <span class="heart" style="left:30%; animation-duration:22s;">💞</span>
-  <span class="heart" style="left:50%; animation-duration:20s;">💖</span>
-  <span class="heart" style="left:70%; animation-duration:24s;">💘</span>
-  <span class="heart" style="left:90%; animation-duration:26s;">💓</span>
+  <span class="heart" style="left:25%; animation-duration:22s;">💞</span>
+  <span class="heart" style="left:40%; animation-duration:20s;">💖</span>
+  <span class="heart" style="left:55%; animation-duration:24s;">💘</span>
+  <span class="heart" style="left:70%; animation-duration:19s;">💓</span>
+  <span class="heart" style="left:85%; animation-duration:26s;">💗</span>
 </div>
 
 <h1>For My Favorite Person 💕</h1>
@@ -204,64 +214,60 @@ luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
 </p>
 
 <div class="gallery">
-  <!-- KEEP ADDING UP TO 37 IMAGES -->
-  <img src="photo1.jpg" onclick="openModal(this)">
-  <img src="photo2.jpg" onclick="openModal(this)">
-  <img src="photo3.jpg" onclick="openModal(this)">
-  <img src="photo4.jpg" onclick="openModal(this)">
-  <img src="photo5.jpg" onclick="openModal(this)">
-  <img src="photo6.jpg" onclick="openModal(this)">
-  <img src="photo7.jpg" onclick="openModal(this)">
-  <img src="photo8.jpg" onclick="openModal(this)">
-  <img src="photo9.jpg" onclick="openModal(this)">
-  <img src="photo10.jpg" onclick="openModal(this)">
-  <img src="photo11.jpg" onclick="openModal(this)">
-  <img src="photo12.jpg" onclick="openModal(this)">
-  <img src="photo13.jpg" onclick="openModal(this)">
-  <img src="photo14.jpg" onclick="openModal(this)">
-  <img src="photo15.jpg" onclick="openModal(this)">
-  <img src="photo16.jpg" onclick="openModal(this)">
-  <img src="photo17.jpg" onclick="openModal(this)">
-  <img src="photo18.jpg" onclick="openModal(this)">
-  <img src="photo19.jpg" onclick="openModal(this)">
-  <img src="photo20.jpg" onclick="openModal(this)">
-  <img src="photo21.jpg" onclick="openModal(this)">
-  <img src="photo22.jpg" onclick="openModal(this)">
-  <img src="photo23.jpg" onclick="openModal(this)">
-  <img src="photo24.jpg" onclick="openModal(this)">
-  <img src="photo25.jpg" onclick="openModal(this)">
-  <img src="photo26.jpg" onclick="openModal(this)">
-  <img src="photo27.jpg" onclick="openModal(this)">
-  <img src="photo28.jpg" onclick="openModal(this)">
-  <img src="photo29.jpg" onclick="openModal(this)">
-  <img src="photo30.jpg" onclick="openModal(this)">
-  <img src="photo31.jpg" onclick="openModal(this)">
-  <img src="photo32.jpg" onclick="openModal(this)">
-  <img src="photo33.jpg" onclick="openModal(this)">
-  <img src="photo34.jpg" onclick="openModal(this)">
-  <img src="photo35.jpg" onclick="openModal(this)">
-  <img src="photo36.jpg" onclick="openModal(this)">
-  <img src="photo37.jpg" onclick="openModal(this)">
+  <!-- ADD ALL YOUR 37 PHOTOS HERE -->
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+  <img src="photo4.jpg">
+  <img src="photo5.jpg">
+  <img src="photo6.jpg">
+  <img src="photo7.jpg">
+  <img src="photo8.jpg">
+  <img src="photo9.jpg">
+  <img src="photo10.jpg">
+  <img src="photo11.jpg">
+  <img src="photo12.jpg">
+  <img src="photo13.jpg">
+  <img src="photo14.jpg">
+  <img src="photo15.jpg">
+  <img src="photo16.jpg">
+  <img src="photo17.jpg">
+  <img src="photo18.jpg">
+  <img src="photo19.jpg">
+  <img src="photo20.jpg">
+  <img src="photo21.jpg">
+  <img src="photo22.jpg">
+  <img src="photo23.jpg">
+  <img src="photo24.jpg">
+  <img src="photo25.jpg">
+  <img src="photo26.jpg">
+  <img src="photo27.jpg">
+  <img src="photo28.jpg">
+  <img src="photo29.jpg">
+  <img src="photo30.jpg">
+  <img src="photo31.jpg">
+  <img src="photo32.jpg">
+  <img src="photo33.jpg">
+  <img src="photo34.jpg">
+  <img src="photo35.jpg">
+  <img src="photo36.jpg">
+  <img src="photo37.jpg">
 </div>
 
 <div class="letter-paper">
-  <div class="letter-title">
-    <div class="line"></div>
-    <span>My Love 🤎</span>
-    <div class="line"></div>
-  </div>
+<h2>My Love 🤎</h2>
 
-  <p>
+<p>
 Anjali i am soo grateful to have u chakkaree omgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn
-  </p>
+</p>
 
-  <p>
-I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa aakaa koreee msgs andd ee web maathree pattiyolluu enn and i am really soryy for that chakkaareeeee ADUTHAAAAA VALENTINES DAYY NAAMMAKK PWOLIKKAAMM (or athinta adutha as adutha mah baby having exams alleee)
-  </p>
+<p>
+I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa...
+</p>
 
-  <p>
-NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE HEHEHEHHE LOOVEEEEEEEEEEEEE UUU SOOOOOOOO MUCCCCCCCCCHHHHHHHHHHHH CHAAKKAAREEEEEEEEEEEEEE
-  </p>
+<p>
+NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE
+</p>
 </div>
 
 <button class="music-btn" onclick="toggleMusic()">Play Music 💖</button>
@@ -270,44 +276,57 @@ NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY 
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="modal" id="modal" onclick="closeModal()">
-  <img id="modalImg">
+<div id="lightbox">
+  <img id="lightbox-img" class="hidden">
 </div>
 
 <script>
-  const music = document.getElementById("bgMusic");
-  const btn = document.querySelector(".music-btn");
-  music.volume = 0.5;
+const music = document.getElementById("bgMusic");
+const btn = document.querySelector(".music-btn");
+music.volume = 0.5;
 
-  function toggleMusic() {
-    if (music.paused) {
-      music.play();
-      btn.innerText = "Pause Music 💔";
-    } else {
-      music.pause();
-      btn.innerText = "Play Music 💖";
-    }
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    btn.innerText = "Pause Music 💔";
+  } else {
+    music.pause();
+    btn.innerText = "Play Music 💖";
   }
+}
 
-  function openModal(img) {
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    modalImg.src = img.src;
-    modal.style.display = "flex";
+const images = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
 
-    for (let i = 0; i < 25; i++) {
-      const heart = document.createElement("div");
-      heart.className = "modal-heart";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.textContent = "💖";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 2000);
-    }
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.classList.add("hidden");
+    spawnFallingHearts();
+
+    setTimeout(() => {
+      lightboxImg.src = img.src;
+      lightboxImg.classList.remove("hidden");
+    }, 600);
+  });
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+function spawnFallingHearts() {
+  for (let i = 0; i < 35; i++) {
+    const h = document.createElement("div");
+    h.className = "photo-heart-fall";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = (0.8 + Math.random() * 0.6) + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 1500);
   }
-
-  function closeModal() {
-    document.getElementById("modal").style.display = "none";
-  }
+}
 </script>
 
 </body>
