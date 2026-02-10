@@ -11,6 +11,7 @@
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #ffd1dc, #ffffff);
     text-align: center;
+    overflow-x: hidden;
   }
 
   h1 {
@@ -26,8 +27,30 @@
     line-height: 1.7;
   }
 
+  /* 💗 FLOATING HEARTS */
+  .hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .heart {
+    position: absolute;
+    font-size: 18px;
+    opacity: 0.25;
+    animation: floatUp linear infinite;
+  }
+
+  @keyframes floatUp {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+  }
+
   /* 📸 GALLERY */
   .gallery {
+    position: relative;
+    z-index: 1;
     max-width: 1200px;
     margin: auto;
     padding: 20px;
@@ -49,6 +72,56 @@
     border-radius: 18px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     break-inside: avoid;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+  }
+
+  /* 📜 LOVE LETTER */
+  .letter-paper {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    margin: 140px auto 160px;
+    padding: 60px 50px;
+    background: #f3e4c7;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 100% 26px;
+    border-radius: 14px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    font-family: "Georgia", "Times New Roman", serif;
+    color: #4a3728;
+    line-height: 2;
+    text-align: left;
+    animation: letterFloat 6s ease-in-out infinite;
+  }
+
+  @keyframes letterFloat {
+    0%,100% {
+      transform: translateY(0);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    }
+    50% {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 55px rgba(0,0,0,0.4);
+    }
+  }
+
+  .letter-paper h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    color: #6b4b2a;
+  }
+
+  .letter-paper p {
+    font-size: 1.15rem;
+    margin-bottom: 28px;
+    white-space: pre-line;
   }
 
   /* 🎵 MUSIC BUTTON */
@@ -65,45 +138,30 @@
     cursor: pointer;
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     z-index: 9999;
+    transition: transform 0.2s ease;
+  }
+
+  .music-btn:hover {
+    transform: scale(1.05);
   }
 
   .music-btn:active {
     transform: scale(0.95);
   }
-
-  /* 📜 OLD LOVE LETTER PAPER */
-  .letter-paper {
-    max-width: 850px;
-    margin: 120px auto 140px;
-    padding: 60px 50px;
-    background: #f3e4c7;
-    background-image:
-      linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-    background-size: 100% 26px;
-    border-radius: 14px;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-    font-family: "Georgia", "Times New Roman", serif;
-    color: #4a3728;
-    line-height: 2;
-    text-align: left;
-  }
-
-  .letter-paper h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.2rem;
-    color: #6b4b2a;
-  }
-
-  .letter-paper p {
-    font-size: 1.15rem;
-    margin-bottom: 28px;
-    white-space: pre-line;
-  }
 </style>
 </head>
 
 <body>
+
+<!-- 💗 HEARTS -->
+<div class="hearts">
+  <span class="heart" style="left:10%; animation-duration:18s;">💗</span>
+  <span class="heart" style="left:25%; animation-duration:22s;">💞</span>
+  <span class="heart" style="left:40%; animation-duration:20s;">💖</span>
+  <span class="heart" style="left:55%; animation-duration:24s;">💘</span>
+  <span class="heart" style="left:70%; animation-duration:19s;">💓</span>
+  <span class="heart" style="left:85%; animation-duration:26s;">💗</span>
+</div>
 
 <h1>For My Favorite Person 💕</h1>
 
@@ -114,7 +172,7 @@ every pic here reminds me how lucky i ammm
 luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
 </p>
 
-<!-- 📸 PHOTO GALLERY -->
+<!-- 📸 GALLERY -->
 <div class="gallery">
   <img src="photo1.jpg">
   <img src="photo2.jpg">
@@ -156,7 +214,7 @@ luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
   
 </div>
 
-<!-- 📜 LOVE LETTER (FINAL PART) -->
+<!-- 📜 LOVE LETTER -->
 <div class="letter-paper">
   <h2>My Love 🤎</h2>
 
@@ -183,8 +241,7 @@ NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY 
 <script>
   const music = document.getElementById("bgMusic");
   const btn = document.querySelector(".music-btn");
-
-  music.volume = 0.5; // 🔒 50% volume always
+  music.volume = 0.5;
 
   function toggleMusic() {
     if (music.paused) {
@@ -199,4 +256,3 @@ NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY 
 
 </body>
 </html>
-
