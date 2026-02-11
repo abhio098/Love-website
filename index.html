@@ -6,194 +6,189 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #ffd1dc, #ffffff);
-  text-align: center;
-  overflow-x: hidden;
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(to bottom,#ffd1dc,#fff);
+text-align:center;
+overflow-x:hidden;
 }
 
-/* ---------- HEADINGS ---------- */
-h1 {
-  margin-top: 40px;
-  color: #ff4d6d;
+/* HEADER */
+h1{margin-top:40px;color:#ff4d6d;}
+
+.intro{
+max-width:700px;
+margin:20px auto 40px;
+padding:0 20px;
+color:#444;
+line-height:1.7;
 }
 
-.intro {
-  max-width: 700px;
-  margin: 20px auto 40px;
-  padding: 0 20px;
-  color: #444;
-  line-height: 1.7;
+/* FLOAT HEARTS */
+.hearts{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.heart{position:absolute;font-size:18px;opacity:.25;animation:floatUp linear infinite;}
+@keyframes floatUp{from{transform:translateY(100vh)}to{transform:translateY(-10vh)}}
+
+/* GALLERY */
+.gallery{
+position:relative;
+z-index:1;
+max-width:1200px;
+margin:auto;
+padding:20px;
+column-count:3;
+column-gap:18px;
+}
+@media(max-width:900px){.gallery{column-count:2}}
+@media(max-width:500px){.gallery{column-count:1}}
+
+.gallery img{
+width:100%;
+margin-bottom:18px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+break-inside:avoid;
+cursor:pointer;
+transition:.35s;
+}
+.gallery img:hover{
+transform:scale(1.03);
+box-shadow:0 18px 40px rgba(0,0,0,.25);
 }
 
-/* ---------- BACKGROUND HEARTS ---------- */
-.hearts {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+/* LETTER */
+.letter-paper{
+position:relative;
+z-index:1;
+max-width:980px;
+margin:160px auto 180px;
+padding:80px 70px;
+background:#f3e4c7;
+background-image:linear-gradient(rgba(0,0,0,.03)1px,transparent 1px);
+background-size:100% 26px;
+border-radius:16px;
+box-shadow:0 24px 55px rgba(0,0,0,.35);
+font-family:Georgia,serif;
+color:#4a3728;
+line-height:2.1;
+text-align:left;
+animation:letterFloat 6s ease-in-out infinite;
 }
+@keyframes letterFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 
-.heart {
-  position: absolute;
-  font-size: 18px;
-  opacity: 0.25;
-  animation: floatUp linear infinite;
+.letter-paper h2{
+text-align:center;
+margin-bottom:50px;
+font-size:2.6rem;
+color:#6b4b2a;
+position:relative;
 }
-
-@keyframes floatUp {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-10vh); }
-}
-
-/* ---------- GALLERY ---------- */
-.gallery {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-  column-count: 3;
-  column-gap: 18px;
-}
-
-@media (max-width: 900px) { .gallery { column-count: 2; } }
-@media (max-width: 500px) { .gallery { column-count: 1; } }
-
-.gallery img {
-  width: 100%;
-  margin-bottom: 18px;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  break-inside: avoid;
-  cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.gallery img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
-}
-
-/* ---------- LETTER (BIGGER NOW) ---------- */
-.letter-paper {
-  position: relative;
-  z-index: 1;
-  max-width: 980px;              /* 👈 bigger width */
-  margin: 160px auto 180px;
-  padding: 80px 70px;            /* 👈 more padding */
-  background: #f3e4c7;
-  background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-  background-size: 100% 26px;
-  border-radius: 16px;
-  box-shadow: 0 24px 55px rgba(0,0,0,0.35);
-  font-family: Georgia, serif;
-  color: #4a3728;
-  line-height: 2.1;
-  text-align: left;
-  animation: letterFloat 6s ease-in-out infinite;
-}
-
-@keyframes letterFloat {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-.letter-paper h2 {
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 2.6rem;            /* 👈 bigger heading */
-  color: #6b4b2a;
-  position: relative;
-}
-
 .letter-paper h2::before,
-.letter-paper h2::after {
-  content: "❤";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.6;
+.letter-paper h2::after{
+content:"❤";
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+opacity:.6;
+}
+.letter-paper h2::before{left:-40px}
+.letter-paper h2::after{right:-40px}
+
+.letter-paper p{
+font-size:1.28rem;
+margin-bottom:34px;
+white-space:pre-line;
 }
 
-.letter-paper h2::before { left: -40px; }
-.letter-paper h2::after { right: -40px; }
-
-.letter-paper p {
-  font-size: 1.28rem;           /* 👈 bigger text */
-  margin-bottom: 34px;
-  white-space: pre-line;
+/* MUSIC BTN */
+.music-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#ff4d6d;
+color:white;
+border:none;
+padding:16px 22px;
+border-radius:50px;
+cursor:pointer;
+z-index:9999;
 }
 
-/* ---------- MUSIC BUTTON ---------- */
-.music-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ff4d6d;
-  color: white;
-  border: none;
-  padding: 16px 22px;
-  border-radius: 50px;
-  cursor: pointer;
-  z-index: 9999;
+/* LIGHTBOX */
+#lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.88);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:10000;
+gap:40px;
+padding:40px;
 }
 
-/* ---------- LIGHTBOX ---------- */
-#lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
+#lightbox img{
+max-width:60%;
+max-height:85%;
+border-radius:16px;
+opacity:0;
+transform:scale(.92);
+transition:.6s;
+}
+#lightbox img.show{
+opacity:1;
+transform:scale(1);
 }
 
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 16px;
-  opacity: 0;
-  transform: scale(0.92);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+/* QUOTE PANEL */
+.quoteBox{
+width:260px;
+color:white;
+font-size:1.2rem;
+line-height:1.6;
+text-align:center;
+opacity:0;
+transform:translateX(40px);
+transition:.6s;
+}
+.quoteBox.show{
+opacity:1;
+transform:translateX(0);
 }
 
-#lightbox img.show {
-  opacity: 1;
-  transform: scale(1);
+.teddy{
+font-size:30px;
+margin-bottom:10px;
+animation:bounce 2s infinite;
+}
+@keyframes bounce{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-6px)}
 }
 
-/* ---------- FALLING HEARTS ---------- */
-.photo-heart-fall {
-  position: fixed;
-  top: -20px;
-  font-size: 22px;
-  animation: fallDown 1.2s linear forwards;
-  pointer-events: none;
-  z-index: 10001;
+/* FALL HEARTS */
+.photo-heart-fall{
+position:fixed;
+top:-20px;
+font-size:22px;
+animation:fallDown 1.2s linear forwards;
+pointer-events:none;
+z-index:10001;
 }
-
-@keyframes fallDown {
-  to {
-    transform: translateY(110vh);
-    opacity: 0;
-  }
-}
+@keyframes fallDown{to{transform:translateY(110vh);opacity:0}}
 </style>
 </head>
 
 <body>
 
 <div class="hearts">
-  <span class="heart" style="left:10%; animation-duration:18s;">💗</span>
-  <span class="heart" style="left:25%; animation-duration:22s;">💞</span>
-  <span class="heart" style="left:40%; animation-duration:20s;">💖</span>
-  <span class="heart" style="left:55%; animation-duration:24s;">💘</span>
-  <span class="heart" style="left:70%; animation-duration:19s;">💓</span>
-  <span class="heart" style="left:85%; animation-duration:26s;">💗</span>
+<span class="heart" style="left:10%;animation-duration:18s;">💗</span>
+<span class="heart" style="left:25%;animation-duration:22s;">💞</span>
+<span class="heart" style="left:40%;animation-duration:20s;">💖</span>
+<span class="heart" style="left:55%;animation-duration:24s;">💘</span>
+<span class="heart" style="left:70%;animation-duration:19s;">💓</span>
+<span class="heart" style="left:85%;animation-duration:26s;">💗</span>
 </div>
 
 <h1>For My Favorite Person 💕</h1>
@@ -206,85 +201,141 @@ luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
 </p>
 
 <div class="gallery">
-  <img src="photo1.jpg"><img src="photo2.jpg"><img src="photo3.jpg">
-  <img src="photo4.jpg"><img src="photo5.jpg"><img src="photo6.jpg">
-  <img src="photo7.jpg"><img src="photo8.jpg"><img src="photo9.jpg">
-  <img src="photo10.jpg"><img src="photo11.jpg"><img src="photo12.jpg">
-  <img src="photo13.jpg"><img src="photo14.jpg"><img src="photo15.jpg">
-  <img src="photo16.jpg"><img src="photo17.jpg"><img src="photo18.jpg">
-  <img src="photo19.jpg"><img src="photo20.jpg"><img src="photo21.jpg">
-  <img src="photo22.jpg"><img src="photo23.jpg"><img src="photo24.jpg">
-  <img src="photo25.jpg"><img src="photo26.jpg"><img src="photo27.jpg">
-  <img src="photo28.jpg"><img src="photo29.jpg"><img src="photo30.jpg">
-  <img src="photo31.jpg"><img src="photo32.jpg"><img src="photo33.jpg">
-  <img src="photo34.jpg"><img src="photo35.jpg"><img src="photo36.jpg">
-  <img src="photo37.jpg">
+<!-- YOUR 37 PHOTOS -->
+<img src="photo1.jpg"><img src="photo2.jpg"><img src="photo3.jpg">
+<img src="photo4.jpg"><img src="photo5.jpg"><img src="photo6.jpg">
+<img src="photo7.jpg"><img src="photo8.jpg"><img src="photo9.jpg">
+<img src="photo10.jpg"><img src="photo11.jpg"><img src="photo12.jpg">
+<img src="photo13.jpg"><img src="photo14.jpg"><img src="photo15.jpg">
+<img src="photo16.jpg"><img src="photo17.jpg"><img src="photo18.jpg">
+<img src="photo19.jpg"><img src="photo20.jpg"><img src="photo21.jpg">
+<img src="photo22.jpg"><img src="photo23.jpg"><img src="photo24.jpg">
+<img src="photo25.jpg"><img src="photo26.jpg"><img src="photo27.jpg">
+<img src="photo28.jpg"><img src="photo29.jpg"><img src="photo30.jpg">
+<img src="photo31.jpg"><img src="photo32.jpg"><img src="photo33.jpg">
+<img src="photo34.jpg"><img src="photo35.jpg"><img src="photo36.jpg">
+<img src="photo37.jpg">
 </div>
 
 <div class="letter-paper">
 <h2>My Love 🤎</h2>
-
-<p>
-Anjali i am soo grateful to have u chakkaree omgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn
-</p>
-
-<p>
-I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa...
-</p>
-
-<p>
-NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE
-</p>
+<p>Anjali i am soo grateful to have u chakkaree omgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn</p>
+<p>I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa...</p>
+<p>NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE</p>
 </div>
 
 <button class="music-btn" onclick="toggleMusic()">Play Music 💖</button>
 <audio id="bgMusic"><source src="music.mp3"></audio>
 
+<!-- LIGHTBOX -->
 <div id="lightbox">
-  <img id="lightbox-img">
+<img id="lightbox-img">
+<div class="quoteBox" id="quoteBox">
+<div class="teddy">🧸💗🧸</div>
+<div id="quoteText"></div>
+<div class="teddy">🧸💞🧸</div>
+</div>
 </div>
 
 <script>
-const music = document.getElementById("bgMusic");
-music.volume = 0.5;
+const music=document.getElementById("bgMusic");
+music.volume=0.5;
+function toggleMusic(){music.paused?music.play():music.pause();}
 
-function toggleMusic() {
-  music.paused ? music.play() : music.pause();
+/* 55 QUOTES */
+const quotes=[
+"you’re my favorite notification 💌",
+"you’re my happy place 🥺",
+"i choose you everyday 💞",
+"you’re my softest thought ☁️",
+"my heart smiles because of you 💗",
+"you’re my forever person 💍",
+"i fell for you accidentally and stayed intentionally 💖",
+"you’re my daily dose of happiness 🌸",
+"life feels lighter with you ✨",
+"you’re my favorite hello 💕",
+"i love loving you 💓",
+"you’re my calm in chaos 🌙",
+"you’re my dream come true 💫",
+"home is wherever you are 🏡",
+"you’re my sunshine ☀️",
+"i’m lucky you’re mine 🍀",
+"you’re my sweetest addiction 🍯",
+"you make my heart giggle 🤭",
+"you’re my safe place 🤎",
+"my world = you 🌍",
+"you’re my soft era 💗",
+"i’d pick you in every lifetime ⏳",
+"you’re my star 🌟",
+"you’re my cuddle partner 🧸",
+"you’re my always 🫶",
+"you’re my peace 🌷",
+"i love you more each second ⏰",
+"you’re my heartbeat 💓",
+"you’re my spark ⚡",
+"you’re my favorite story 📖",
+"you’re my treasure 💎",
+"you’re my dream boy/girl 😚",
+"you’re my love language 💌",
+"you’re my everything 🌹",
+"you’re my comfort place 💤",
+"you’re my reason to smile 😊",
+"you’re my heart’s home 🏠",
+"you’re my forever crush 😍",
+"you’re my sweetest chapter 📚",
+"you’re my light ✨",
+"you’re my moon 🌙",
+"you’re my poem 📝",
+"you’re my melody 🎶",
+"you’re my favorite person alive 💕",
+"you’re my miracle 🌈",
+"you’re my favorite feeling 💖",
+"you’re my happiness button 🎀",
+"you’re my soft teddy 🧸",
+"you’re my destiny 💫",
+"you’re my pretty universe 🌌",
+"you’re my lucky star ⭐",
+"you’re my warm hug 🤗",
+"you’re my gentle love 🌷",
+"you’re my sweetest dream 😴",
+"you’re my heart’s favorite place ❤️"
+];
+
+const images=document.querySelectorAll(".gallery img");
+const lightbox=document.getElementById("lightbox");
+const lightboxImg=document.getElementById("lightbox-img");
+const quoteBox=document.getElementById("quoteBox");
+const quoteText=document.getElementById("quoteText");
+
+images.forEach(img=>{
+img.addEventListener("click",()=>{
+lightbox.style.display="flex";
+lightboxImg.classList.remove("show");
+quoteBox.classList.remove("show");
+lightboxImg.src="";
+
+spawnHearts();
+
+setTimeout(()=>{
+lightboxImg.src=img.src;
+quoteText.textContent=quotes[Math.floor(Math.random()*quotes.length)];
+lightboxImg.classList.add("show");
+quoteBox.classList.add("show");
+},600);
+});
+});
+
+lightbox.addEventListener("click",()=>lightbox.style.display="none");
+
+function spawnHearts(){
+for(let i=0;i<35;i++){
+const h=document.createElement("div");
+h.className="photo-heart-fall";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),1500);
 }
-
-const images = document.querySelectorAll(".gallery img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-
-images.forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.style.display = "flex";
-    lightboxImg.classList.remove("show");
-    lightboxImg.src = "";
-
-    spawnFallingHearts();
-
-    setTimeout(() => {
-      lightboxImg.src = img.src;
-      lightboxImg.offsetHeight;
-      lightboxImg.classList.add("show");
-    }, 600);
-  });
-});
-
-lightbox.addEventListener("click", () => {
-  lightbox.style.display = "none";
-});
-
-function spawnFallingHearts() {
-  for (let i = 0; i < 35; i++) {
-    const h = document.createElement("div");
-    h.className = "photo-heart-fall";
-    h.innerHTML = "❤️";
-    h.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 1500);
-  }
 }
 </script>
 
