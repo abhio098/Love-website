@@ -12,6 +12,19 @@ background:#fff0f5;
 overflow-x:hidden;
 }
 
+/* TITLE GLOW */
+.title{
+text-align:center;
+font-size:48px;
+margin-top:30px;
+color:#ff69b4;
+animation:glow 2s infinite alternate;
+}
+@keyframes glow{
+from{ text-shadow:0 0 10px pink,0 0 20px hotpink; }
+to{ text-shadow:0 0 25px deeppink,0 0 45px hotpink; }
+}
+
 /* gallery */
 .gallery{
 column-count:4;
@@ -113,9 +126,11 @@ font-size:24px;
 </head>
 <body>
 
+<!-- TITLE -->
+<h1 class="title">FOR MY CUTIE PATOOTIE 🤍</h1>
+
 <!-- gallery -->
 <div class="gallery">
-<!-- replace src with your 37 images -->
 <img src="photo1.jpg"><img src="photo2.jpg"><img src="photo3.jpg">
 <img src="photo4.jpg"><img src="photo5.jpg"><img src="photo6.jpg">
 <img src="photo7.jpg"><img src="photo8.jpg"><img src="photo9.jpg">
@@ -145,9 +160,9 @@ font-size:24px;
 <div class="letter">
 Anjali i am soo grateful to have u chakkaree omgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn<br><br>
 
-I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa aakaa koreee msgs andd ee web maathree pattiyolluu enn and i am really soryy for that chakkaareeeee ADUTHAAAAA VALENTINES DAYY NAAMMAKK PWOLIKKAAMM (or athinta adutha as adutha mah baby having exams alleee)<br><br>
+I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa aakaa koreee msgs andd ee web maathree pattiyolluu enn and i am really soryy for that chakkaareeeee ADUTHAAAAA VALENTINES DAYY NAAMMAKK PWOLIKKAAMM<br><br>
 
-NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE HEHEHEHHE LOOVEEEEEEEEEEEEE UUU SOOOOOOOO MUCCCCCCCCCHHHHHHHHHHHH CHAAKKAAREEEEEEEEEEEEEE
+NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE
 </div>
 
 <script>
@@ -155,7 +170,7 @@ const overlay=document.getElementById("overlay");
 const popup=document.getElementById("popupImg");
 const quoteBox=document.getElementById("quoteBox");
 
-/* 50+ quotes */
+/* quotes */
 const quotes=[
 "You are my happy place 🧸","I fall for u daily 💕","Cutest human alive 🥺",
 "My heart chose u 💖","U + me forever 💞","My favorite notification 😚",
@@ -196,12 +211,12 @@ overlay.appendChild(h);
 setTimeout(()=>h.remove(),1000);
 }
 
-/* show image quickly */
+/* synced timing */
 setTimeout(()=>{
 popup.style.opacity="1";
 popup.style.transform="scale(1)";
 quoteBox.innerHTML="🧸 "+quotes[Math.floor(Math.random()*quotes.length)];
-},500);
+},350);
 };
 });
 
@@ -228,4 +243,3 @@ btn.textContent="Play Music 💖";
 
 </body>
 </html>
-
