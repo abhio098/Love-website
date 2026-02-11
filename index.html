@@ -2,206 +2,120 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For My Favorite Person 🤎</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
 
 <style>
 body{
 margin:0;
-font-family:Arial;
-background:linear-gradient(to bottom,#ffd1dc,#fff);
-text-align:center;
+font-family:cursive;
+background:#fff0f5;
 overflow-x:hidden;
 }
 
-/* HEADER */
-h1{margin-top:40px;color:#ff4d6d;}
-
-.intro{
-max-width:700px;
-margin:20px auto 40px;
-padding:0 20px;
-color:#444;
-line-height:1.7;
-}
-
-/* FLOAT HEARTS */
-.hearts{position:fixed;inset:0;pointer-events:none;z-index:0;}
-.heart{position:absolute;font-size:18px;opacity:.25;animation:floatUp linear infinite;}
-@keyframes floatUp{from{transform:translateY(100vh)}to{transform:translateY(-10vh)}}
-
-/* GALLERY */
+/* gallery */
 .gallery{
-position:relative;
-z-index:1;
-max-width:1200px;
-margin:auto;
+column-count:4;
+column-gap:12px;
 padding:20px;
-column-count:3;
-column-gap:18px;
 }
-@media(max-width:900px){.gallery{column-count:2}}
-@media(max-width:500px){.gallery{column-count:1}}
-
 .gallery img{
 width:100%;
-margin-bottom:18px;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
-break-inside:avoid;
+margin-bottom:12px;
+border-radius:15px;
 cursor:pointer;
-transition:.35s;
+transition:.3s;
 }
 .gallery img:hover{
-transform:scale(1.03);
-box-shadow:0 18px 40px rgba(0,0,0,.25);
+transform:scale(1.02);
 }
 
-/* LETTER */
-.letter-paper{
-position:relative;
-z-index:1;
-max-width:980px;
-margin:160px auto 180px;
-padding:80px 70px;
-background:#f3e4c7;
-background-image:linear-gradient(rgba(0,0,0,.03)1px,transparent 1px);
-background-size:100% 26px;
-border-radius:16px;
-box-shadow:0 24px 55px rgba(0,0,0,.35);
-font-family:Georgia,serif;
-color:#4a3728;
-line-height:2.1;
-text-align:left;
-animation:letterFloat 6s ease-in-out infinite;
+/* overlay */
+#overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.8);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:1000;
 }
-@keyframes letterFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 
-.letter-paper h2{
-text-align:center;
-margin-bottom:50px;
-font-size:2.6rem;
-color:#6b4b2a;
-position:relative;
+#popupImg{
+max-width:70%;
+max-height:80%;
+border-radius:20px;
+opacity:0;
+transform:scale(.9);
+transition:.4s;
 }
-.letter-paper h2::before,
-.letter-paper h2::after{
-content:"❤";
+
+#quoteBox{
 position:absolute;
+right:40px;
 top:50%;
 transform:translateY(-50%);
-opacity:.6;
-}
-.letter-paper h2::before{left:-40px}
-.letter-paper h2::after{right:-40px}
-
-.letter-paper p{
-font-size:1.28rem;
-margin-bottom:34px;
-white-space:pre-line;
+width:240px;
+color:white;
+font-size:20px;
+text-align:center;
 }
 
-/* MUSIC BTN */
+/* floating hearts */
+.heart{
+position:absolute;
+color:pink;
+font-size:20px;
+animation:float 1s linear forwards;
+}
+@keyframes float{
+from{transform:translateY(0);opacity:1;}
+to{transform:translateY(-200px);opacity:0;}
+}
+
+/* music btn */
 .music-btn{
 position:fixed;
 bottom:20px;
 right:20px;
-background:#ff4d6d;
-color:white;
+padding:12px 18px;
 border:none;
-padding:16px 22px;
-border-radius:50px;
-cursor:pointer;
-z-index:9999;
-}
-
-/* LIGHTBOX */
-#lightbox{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.88);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:10000;
-gap:40px;
-padding:40px;
-}
-
-#lightbox img{
-max-width:60%;
-max-height:85%;
-border-radius:16px;
-opacity:0;
-transform:scale(.92);
-transition:.6s;
-}
-#lightbox img.show{
-opacity:1;
-transform:scale(1);
-}
-
-/* QUOTE PANEL */
-.quoteBox{
-width:260px;
+border-radius:30px;
+background:#ff69b4;
 color:white;
-font-size:1.2rem;
-line-height:1.6;
-text-align:center;
-opacity:0;
-transform:translateX(40px);
-transition:.6s;
-}
-.quoteBox.show{
-opacity:1;
-transform:translateX(0);
+font-size:16px;
+cursor:pointer;
+box-shadow:0 0 10px pink;
 }
 
-.teddy{
-font-size:30px;
-margin-bottom:10px;
-animation:bounce 2s infinite;
-}
-@keyframes bounce{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-6px)}
-}
-
-/* FALL HEARTS */
-.photo-heart-fall{
-position:fixed;
-top:-20px;
+/* love letter */
+.letter{
+max-width:900px;
+margin:60px auto;
+background:#e6c79c;
+padding:60px;
+border-radius:10px;
+box-shadow:0 0 25px rgba(0,0,0,.3);
 font-size:22px;
-animation:fallDown 1.2s linear forwards;
-pointer-events:none;
-z-index:10001;
+line-height:1.8;
+position:relative;
 }
-@keyframes fallDown{to{transform:translateY(110vh);opacity:0}}
+
+.letter:before,
+.letter:after{
+content:"💌 💕 💖 💘 💝";
+position:absolute;
+top:-30px;
+font-size:24px;
+}
+.letter:before{left:20px;}
+.letter:after{right:20px;}
 </style>
 </head>
-
 <body>
 
-<div class="hearts">
-<span class="heart" style="left:10%;animation-duration:18s;">💗</span>
-<span class="heart" style="left:25%;animation-duration:22s;">💞</span>
-<span class="heart" style="left:40%;animation-duration:20s;">💖</span>
-<span class="heart" style="left:55%;animation-duration:24s;">💘</span>
-<span class="heart" style="left:70%;animation-duration:19s;">💓</span>
-<span class="heart" style="left:85%;animation-duration:26s;">💗</span>
-</div>
-
-<h1>For My Favorite Person 💕</h1>
-
-<p class="intro">
-hellooooooo baabbyyyyy 💖 hehehe  
-i made this little websiteeee just for uu  
-every pic here reminds me how lucky i ammm  
-luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
-</p>
-
+<!-- gallery -->
 <div class="gallery">
-<!-- YOUR 37 PHOTOS -->
+<!-- replace src with your 37 images -->
 <img src="photo1.jpg"><img src="photo2.jpg"><img src="photo3.jpg">
 <img src="photo4.jpg"><img src="photo5.jpg"><img src="photo6.jpg">
 <img src="photo7.jpg"><img src="photo8.jpg"><img src="photo9.jpg">
@@ -217,124 +131,97 @@ luvvvvvvvvvv uuu sooo muchhh alwayssss 🥹💞
 <img src="photo37.jpg">
 </div>
 
-<div class="letter-paper">
-<h2>My Love 🤎</h2>
-<p>Anjali i am soo grateful to have u chakkaree omgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn</p>
-<p>I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa...</p>
-<p>NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE</p>
+<!-- overlay -->
+<div id="overlay" onclick="closeImg()">
+<img id="popupImg">
+<div id="quoteBox"></div>
 </div>
 
-<button class="music-btn" onclick="toggleMusic()">Play Music 💖</button>
-<audio id="bgMusic"><source src="music.mp3"></audio>
+<!-- music -->
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">Play Music 💖</button>
+<audio id="music" src="music.mp3" loop></audio>
 
-<!-- LIGHTBOX -->
-<div id="lightbox">
-<img id="lightbox-img">
-<div class="quoteBox" id="quoteBox">
-<div class="teddy">🧸💗🧸</div>
-<div id="quoteText"></div>
-<div class="teddy">🧸💞🧸</div>
-</div>
+<!-- love letter -->
+<div class="letter">
+Anjali i am soo grateful to have u chakkaree omgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn<br><br>
+
+I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa aakaa koreee msgs andd ee web maathree pattiyolluu enn and i am really soryy for that chakkaareeeee ADUTHAAAAA VALENTINES DAYY NAAMMAKK PWOLIKKAAMM (or athinta adutha as adutha mah baby having exams alleee)<br><br>
+
+NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE HEHEHEHHE LOOVEEEEEEEEEEEEE UUU SOOOOOOOO MUCCCCCCCCCHHHHHHHHHHHH CHAAKKAAREEEEEEEEEEEEEE
 </div>
 
 <script>
-const music=document.getElementById("bgMusic");
-music.volume=0.5;
-function toggleMusic(){music.paused?music.play():music.pause();}
+const overlay=document.getElementById("overlay");
+const popup=document.getElementById("popupImg");
+const quoteBox=document.getElementById("quoteBox");
 
-/* 55 QUOTES */
+/* 50+ quotes */
 const quotes=[
-"you’re my favorite notification 💌",
-"you’re my happy place 🥺",
-"i choose you everyday 💞",
-"you’re my softest thought ☁️",
-"my heart smiles because of you 💗",
-"you’re my forever person 💍",
-"i fell for you accidentally and stayed intentionally 💖",
-"you’re my daily dose of happiness 🌸",
-"life feels lighter with you ✨",
-"you’re my favorite hello 💕",
-"i love loving you 💓",
-"you’re my calm in chaos 🌙",
-"you’re my dream come true 💫",
-"home is wherever you are 🏡",
-"you’re my sunshine ☀️",
-"i’m lucky you’re mine 🍀",
-"you’re my sweetest addiction 🍯",
-"you make my heart giggle 🤭",
-"you’re my safe place 🤎",
-"my world = you 🌍",
-"you’re my soft era 💗",
-"i’d pick you in every lifetime ⏳",
-"you’re my star 🌟",
-"you’re my cuddle partner 🧸",
-"you’re my always 🫶",
-"you’re my peace 🌷",
-"i love you more each second ⏰",
-"you’re my heartbeat 💓",
-"you’re my spark ⚡",
-"you’re my favorite story 📖",
-"you’re my treasure 💎",
-"you’re my dream boy/girl 😚",
-"you’re my love language 💌",
-"you’re my everything 🌹",
-"you’re my comfort place 💤",
-"you’re my reason to smile 😊",
-"you’re my heart’s home 🏠",
-"you’re my forever crush 😍",
-"you’re my sweetest chapter 📚",
-"you’re my light ✨",
-"you’re my moon 🌙",
-"you’re my poem 📝",
-"you’re my melody 🎶",
-"you’re my favorite person alive 💕",
-"you’re my miracle 🌈",
-"you’re my favorite feeling 💖",
-"you’re my happiness button 🎀",
-"you’re my soft teddy 🧸",
-"you’re my destiny 💫",
-"you’re my pretty universe 🌌",
-"you’re my lucky star ⭐",
-"you’re my warm hug 🤗",
-"you’re my gentle love 🌷",
-"you’re my sweetest dream 😴",
-"you’re my heart’s favorite place ❤️"
+"You are my happy place 🧸","I fall for u daily 💕","Cutest human alive 🥺",
+"My heart chose u 💖","U + me forever 💞","My favorite notification 😚",
+"U make my world pink 🌸","My baby forever 🐻","You're my safe place 💗",
+"I smile cuz of u 😊","My sunshine ☀️","My love bug 🐞",
+"I choose u always 💘","You're my destiny ✨","My heart beats u",
+"You're my dream come true 💭","My angel 😇","Love u infinity ♾️",
+"My happiness = u 😍","My sweet teddy 🧸","Forever mine 💍",
+"You're my magic ✨","My comfort human 🤍","You heal me 💓",
+"U are my home 🏡","My world 🌍","You're my melody 🎵",
+"My everything 💞","Love u endlessly ♾️","You're my star ⭐",
+"My cute problem 😚","My reason 😌","My heart thief 💘",
+"My cuddle buddy 🤗","You're my story 📖","My joy 💕",
+"My soft corner 💗","My favorite person 😍","My lucky charm 🍀",
+"You're perfect 💓","My baby boo 😚","My rose 🌹",
+"You're my peace 🕊️","My sweetest addiction 🍬","My darling 💞",
+"My soulmate 💖","My forever person 💘","My cutie pie 🥧",
+"My love planet 🪐","You're my magic spell ✨"
 ];
 
-const images=document.querySelectorAll(".gallery img");
-const lightbox=document.getElementById("lightbox");
-const lightboxImg=document.getElementById("lightbox-img");
-const quoteBox=document.getElementById("quoteBox");
-const quoteText=document.getElementById("quoteText");
+/* open image */
+document.querySelectorAll(".gallery img").forEach(img=>{
+img.onclick=e=>{
+e.stopPropagation();
+overlay.style.display="flex";
+popup.style.opacity="0";
+popup.src=img.src;
+quoteBox.innerHTML="";
 
-images.forEach(img=>{
-img.addEventListener("click",()=>{
-lightbox.style.display="flex";
-lightboxImg.classList.remove("show");
-quoteBox.classList.remove("show");
-lightboxImg.src="";
-
-spawnHearts();
-
-setTimeout(()=>{
-lightboxImg.src=img.src;
-quoteText.textContent=quotes[Math.floor(Math.random()*quotes.length)];
-lightboxImg.classList.add("show");
-quoteBox.classList.add("show");
-},600);
-});
-});
-
-lightbox.addEventListener("click",()=>lightbox.style.display="none");
-
-function spawnHearts(){
-for(let i=0;i<35;i++){
-const h=document.createElement("div");
-h.className="photo-heart-fall";
-h.innerHTML="❤️";
+for(let i=0;i<40;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💗";
 h.style.left=Math.random()*100+"vw";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),1500);
+h.style.top=Math.random()*100+"vh";
+h.style.fontSize=(Math.random()*25+15)+"px";
+overlay.appendChild(h);
+setTimeout(()=>h.remove(),1000);
+}
+
+/* show image quickly */
+setTimeout(()=>{
+popup.style.opacity="1";
+popup.style.transform="scale(1)";
+quoteBox.innerHTML="🧸 "+quotes[Math.floor(Math.random()*quotes.length)];
+},500);
+};
+});
+
+function closeImg(){
+overlay.style.display="none";
+popup.style.transform="scale(.9)";
+}
+
+/* music */
+const music=document.getElementById("music");
+music.volume=0.5;
+const btn=document.getElementById("musicBtn");
+
+function toggleMusic(){
+if(music.paused){
+music.play();
+btn.textContent="Pause Music 💔";
+}else{
+music.pause();
+btn.textContent="Play Music 💖";
 }
 }
 </script>
