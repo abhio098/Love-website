@@ -12,6 +12,19 @@ background:#fff0f5;
 overflow-x:hidden;
 }
 
+/* TITLE GLOW */
+.title{
+text-align:center;
+font-size:48px;
+margin-top:30px;
+color:#ff69b4;
+animation:glow 2s infinite alternate;
+}
+@keyframes glow{
+from{ text-shadow:0 0 10px pink,0 0 20px hotpink; }
+to{ text-shadow:0 0 25px deeppink,0 0 45px hotpink; }
+}
+
 /* gallery */
 .gallery{
 column-count:4;
@@ -21,109 +34,102 @@ padding:20px;
 .gallery img{
 width:100%;
 margin-bottom:12px;
-border-radius:18px;
+border-radius:15px;
 cursor:pointer;
 transition:.3s;
 }
 .gallery img:hover{
-transform:scale(1.05);
+transform:scale(1.02);
 }
 
-/* overlay popup */
+/* overlay */
 #overlay{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.7);
+inset:0;
+background:rgba(0,0,0,.8);
 display:none;
-justify-content:center;
 align-items:center;
-z-index:999;
-flex-direction:row;
-gap:30px;
+justify-content:center;
+z-index:1000;
 }
 
-/* popup image */
-#popup{
-max-width:60%;
+#popupImg{
+max-width:70%;
 max-height:80%;
 border-radius:20px;
-box-shadow:0 0 30px pink;
 opacity:0;
-transform:scale(.8);
+transform:scale(.9);
 transition:.4s;
 }
 
-/* quote box */
 #quoteBox{
-background:#ffe4ec;
-padding:25px;
-border-radius:25px;
-max-width:250px;
-font-size:18px;
+position:absolute;
+right:40px;
+top:50%;
+transform:translateY(-50%);
+width:240px;
+color:white;
+font-size:20px;
 text-align:center;
-box-shadow:0 0 20px #ffb6c1;
-opacity:0;
-transform:translateY(20px);
-transition:.5s;
 }
 
-/* music button */
-#musicBtn{
+/* floating hearts */
+.heart{
+position:absolute;
+color:pink;
+font-size:20px;
+animation:float 1s linear forwards;
+}
+@keyframes float{
+from{transform:translateY(0);opacity:1;}
+to{transform:translateY(-200px);opacity:0;}
+}
+
+/* music btn */
+.music-btn{
 position:fixed;
-bottom:25px;
-right:25px;
-background:#ff69b4;
+bottom:20px;
+right:20px;
+padding:12px 18px;
 border:none;
+border-radius:30px;
+background:#ff69b4;
 color:white;
-padding:15px 25px;
-border-radius:40px;
 font-size:16px;
 cursor:pointer;
-box-shadow:0 0 15px pink;
+box-shadow:0 0 10px pink;
 }
 
-/* hearts */
-.heart{
-position:fixed;
-top:-20px;
-font-size:20px;
-animation:fall linear forwards;
-}
-@keyframes fall{
-to{
-transform:translateY(110vh);
-opacity:0;
-}
-}
-
-/* floating corner texts */
-.floatText{
-position:fixed;
-font-size:20px;
-font-weight:bold;
-color:#ff4da6;
-opacity:0;
-animation:fadeIn 1s forwards;
-pointer-events:none;
-}
-@keyframes fadeIn{
-to{opacity:1;}
+/* love letter */
+.letter{
+max-width:900px;
+margin:60px auto;
+background:#e6c79c;
+padding:60px;
+border-radius:10px;
+box-shadow:0 0 25px rgba(0,0,0,.3);
+font-size:22px;
+line-height:1.8;
+position:relative;
 }
 
+.letter:before,
+.letter:after{
+content:"💌 💕 💗 💖 💗 💘 💗 💗 💗 💗 💝";
+position:absolute;
+top:-30px;
+font-size:24px;
+}
+.letter:before{left:20px;}
+.letter:after{right:20px;}
 </style>
 </head>
 <body>
 
-<!-- MUSIC -->
-<audio id="music" loop>
-<source src="music.mp3">
-</audio>
-<button id="musicBtn" onclick="toggleMusic()">Play Music 💖</button>
+<!-- TITLE -->
+<h1 class="title">FOR MY CUTIE PATOOTIE 🤍</h1>
 
-<!-- GALLERY -->
+<!-- gallery -->
 <div class="gallery">
 <img src="photo1.jpg"><img src="photo2.jpg"><img src="photo3.jpg">
 <img src="photo4.jpg"><img src="photo5.jpg"><img src="photo6.jpg">
@@ -140,119 +146,89 @@ to{opacity:1;}
 <img src="photo37.jpg">
 </div>
 
-<!-- OVERLAY -->
-<div id="overlay">
-<img id="popup">
+<!-- overlay -->
+<div id="overlay" onclick="closeImg()">
+<img id="popupImg">
 <div id="quoteBox"></div>
 </div>
 
-<script>
+<!-- music -->
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">Play Music 💖</button>
+<audio id="music" src="music.mp3" loop></audio>
 
-/* elements */
-const images=document.querySelectorAll(".gallery img");
+<!-- love letter -->
+<div class="letter">
+Anjali i am soo grateful to have u chakkaree omgg ommgg nthrr luckk aahnn ntaa to get this cuttiee pattootootieee aaas my everything heheheheh ntaa luckk enthhaa sccnnn aahnn<br><br>
+
+I am so so so happyy to have u in my life kannahh but reallyy sorryyy valentines day aayit oru nallaa oru gift oohh onnum therann patatnillaa aakaa koreee msgs andd ee web maathree pattiyolluu enn and i am really soryy for that chakkaareeeee ADUTHAAAAA VALENTINES DAYY NAAMMAKK PWOLIKKAAMM<br><br>
+
+NTHOKKEE VANNALLUMM I REALLYY REALLYY LOVEEE UU SOO MUCCHH ANDDD TILL THEE VERY END U WILL BE MY VALENTINE
+</div>
+
+<script>
 const overlay=document.getElementById("overlay");
-const popup=document.getElementById("popup");
+const popup=document.getElementById("popupImg");
 const quoteBox=document.getElementById("quoteBox");
 
 /* quotes */
 const quotes=[
-"You’re my favorite person 🧸","I fall for you daily 💕","You’re my safe place 🤍",
-"Your smile = my happiness 🥺","You’re my cutest problem 😚",
-"I adore you endlessly 💖","You’re my dream come true ✨",
-"Forever yours 💞","My heart chose you 💓",
-"You make life magical 🌸","My happy place is you 🫶",
-"I blush because of you 😳","You’re my sweetest addiction 🍭",
-"Love you more each second ⏳","You’re my destiny 💫",
-"My favorite notification 📱💘","You = my peace ☁️",
-"I belong to you 🫂","You’re my comfort song 🎶",
-"You’re my sunshine 🌞","My heart beats you 💓",
-"I love loving you 💗","You’re my softest thought 🌷",
-"You’re my cuddle zone 🧸","You glow differently ✨",
-"I choose you always 💍","You’re my fairytale 📖",
-"You’re my reason to smile 😊","You’re my sweetest hello 💌",
-"My heart whispers your name 🫀","You’re my lucky star ⭐",
-"I melt for you 🫠","You’re my cutie pie 🥰",
-"My love = you 💘","You’re my favorite habit 💋",
-"I’m addicted to you 😍","You’re my world 🌍",
-"My forever crush 💓","You’re my sweetest dream 🌙",
-"You’re my angel 👼","You complete me 🤍",
-"I’m lucky to have you 🍀","You’re my heart home 🏡",
-"You’re my daily happiness 🌈","You’re my everything 💞",
-"My soul found you 🔮","You’re my soft corner 🌸",
-"You’re my baby 🍼","You’re my treasure 💎",
-"My love story = you 📖"
+"You are my happy place 🧸","I fall for u daily 💕","Cutest human alive 🥺",
+"My heart chose u 💖","U + me forever 💞","My favorite notification 😚",
+"U make my world pink 🌸","My baby forever 🐻","You're my safe place 💗",
+"I smile cuz of u 😊","My sunshine ☀️","My love bug 🐞",
+"I choose u always 💘","You're my destiny ✨","My heart beats u",
+"You're my dream come true 💭","My angel 😇","Love u infinity ♾️",
+"My happiness = u 😍","My sweet teddy 🧸","Forever mine 💍",
+"You're my magic ✨","My comfort human 🤍","You heal me 💓",
+"U are my home 🏡","My world 🌍","You're my melody 🎵",
+"My everything 💞","Love u endlessly ♾️","You're my star ⭐",
+"My cute problem 😚","My reason 😌","My heart thief 💘",
+"My cuddle buddy 🤗","You're my story 📖","My joy 💕",
+"My soft corner 💗","My favorite person 😍","My lucky charm 🍀",
+"You're perfect 💓","My baby boo 😚","My rose 🌹",
+"You're my peace 🕊️","My sweetest addiction 🍬","My darling 💞",
+"My soulmate 💖","My forever person 💘","My cutie pie 🥧",
+"My love planet 🪐","You're my magic spell ✨"
 ];
 
-/* floating texts */
-const floatTexts=[
-"I LOVE ANJALI SO MUCH",
-"ANJU UYIR",
-"ANJALI <3",
-"I LOVE ANJI",
-"IL ANJALI",
-"LUCKY TO HAVE ANJALI"
-];
-
-function spawnFloatingTexts(){
-floatTexts.forEach((text,i)=>{
-setTimeout(()=>{
-const t=document.createElement("div");
-t.className="floatText";
-t.innerText=text;
-t.style.top=Math.random()*90+"vh";
-t.style.left=Math.random()*90+"vw";
-document.body.appendChild(t);
-},i*2000);
-});
-}
-
-/* hearts */
-function hearts(){
-for(let i=0;i<35;i++){
-const h=document.createElement("div");
-h.className="heart";
-h.innerHTML="💖";
-h.style.left=Math.random()*100+"vw";
-h.style.animationDuration=3+Math.random()*2+"s";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),5000);
-}
-}
-
-/* image click */
-images.forEach(img=>{
-img.onclick=()=>{
+/* open image */
+document.querySelectorAll(".gallery img").forEach(img=>{
+img.onclick=e=>{
+e.stopPropagation();
 overlay.style.display="flex";
-popup.style.opacity=0;
-quoteBox.style.opacity=0;
-
-hearts();
-spawnFloatingTexts();
-
-/* set image instantly */
+popup.style.opacity="0";
 popup.src=img.src;
+quoteBox.innerHTML="";
 
-/* random quote */
-quoteBox.innerHTML="🧸<br>"+quotes[Math.floor(Math.random()*quotes.length)];
+for(let i=0;i<40;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💗";
+h.style.left=Math.random()*100+"vw";
+h.style.top=Math.random()*100+"vh";
+h.style.fontSize=(Math.random()*25+15)+"px";
+overlay.appendChild(h);
+setTimeout(()=>h.remove(),1000);
+}
 
+/* synced timing */
 setTimeout(()=>{
-popup.style.opacity=1;
+popup.style.opacity="1";
 popup.style.transform="scale(1)";
-quoteBox.style.opacity=1;
-quoteBox.style.transform="translateY(0)";
-},150);
+quoteBox.innerHTML="🧸 "+quotes[Math.floor(Math.random()*quotes.length)];
+},350);
 };
 });
 
-/* close */
-overlay.onclick=()=>{
+function closeImg(){
 overlay.style.display="none";
-};
+popup.style.transform="scale(.9)";
+}
 
 /* music */
 const music=document.getElementById("music");
+music.volume=0.5;
 const btn=document.getElementById("musicBtn");
-music.volume=.5;
 
 function toggleMusic(){
 if(music.paused){
@@ -263,8 +239,7 @@ music.pause();
 btn.textContent="Play Music 💖";
 }
 }
-
 </script>
+
 </body>
 </html>
-
